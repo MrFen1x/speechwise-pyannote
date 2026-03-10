@@ -24,7 +24,7 @@ def hash_key(key: str) -> str:
 
 @app.post("/diarize")
 async def diarize_audio(file: UploadFile = File(...), x_api_key: str = Header(...)):
-    if hash_key(x_api_key) != API_KEY:
+    if (x_api_key != API_KEY:
         raise HTTPException(status_code=401, detail="Invalid API key")
 
     with tempfile.NamedTemporaryFile(suffix=".wav") as tmp:
